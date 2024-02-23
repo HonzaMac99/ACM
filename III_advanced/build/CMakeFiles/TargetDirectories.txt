@@ -1,0 +1,4 @@
+/home/honzamac/cvut/m2/ACM/III_advanced/build/CMakeFiles/rebuild_cache.dir
+/home/honzamac/cvut/m2/ACM/III_advanced/build/CMakeFiles/edit_cache.dir
+/home/honzamac/cvut/m2/ACM/III_advanced/build/CMakeFiles/aggrcow.dir
+/home/honzamac/cvut/m2/ACM/III_advanced/build/CMakeFiles/odd_sum.dir

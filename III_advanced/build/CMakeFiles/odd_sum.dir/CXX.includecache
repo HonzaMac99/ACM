@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/honzamac/cvut/m2/ACM/III_advanced/1_04_odd_sum.cpp
+iostream
+-
+sstream
+-
+fstream
+-
+

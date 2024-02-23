@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/honzamac/cvut/m2/ACM/III_advanced/1_6_aggrcow.cpp
+iostream
+-
+sstream
+-
+fstream
+-
+
