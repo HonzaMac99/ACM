@@ -1,6 +1,8 @@
 import math
 import numpy as np
 
+# todo: fix the overflows in np.array values
+
 TEST = False
 cases = 1 if TEST else int(input())
 
@@ -26,6 +28,7 @@ for i in range(cases):
         # for idx in comb_idxs[0]:
         #     val_combs_new[idx+1:min(idx+1+6, k+1)] += val_combs[idx]
 
+        # faster
         nonz_mask = (val_combs != 0).astype(int)
         val_combs += np.hstack((0, np.convolve(val_combs, np.ones(6))[:-6].astype(int))) - nonz_mask
         val_combs[val_combs < 0] = 0
