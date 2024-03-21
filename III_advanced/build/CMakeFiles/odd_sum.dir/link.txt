@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/odd_sum.dir/1_04_odd_sum.cpp.o  -o odd_sum 
