@@ -8,11 +8,10 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # add the executable
-add_executable(test test.cpp)
+# add_executable(test test.cpp)
 add_executable(odd_sum 1_04_odd_sum.cpp)
 add_executable(aggrcow 1_6_aggrcow.cpp)
 add_executable(maze 5_1_RRmaze.cpp)
-add_executable(test.cpp)
 
 # enable_testing()
 # 

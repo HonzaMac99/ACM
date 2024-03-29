@@ -2,8 +2,14 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
+#include <queue>
+#include <cstring>
+#include <tuple>
 
 #define PRINT 0
+
+typedef std::tuple<int, int, int> t3int;
+typedef std::priority_queue<t3int, std::vector<t3int>, std::greater<t3int>> min_prior_q;
 
 
 std::vector<int> get_config_arr(std::string input) {
@@ -27,10 +33,6 @@ std::vector<int> get_config_arr(std::string input) {
         std::cout << "incorect char: " << input[i] << std::endl;
         break;
     }
-    // std::cout << "[" << config_arr[0] << ", " 
-    //                  << config_arr[1] << ", " 
-    //                  << config_arr[2] << ", " 
-    //                  << config_arr[3] << "]" << std::endl;
   }
   return config_arr;
 }
@@ -47,10 +49,12 @@ int main() {
 
     std::vector<int> maze[rows][cols];
     bool visited[rows][cols][n_dirs];
-    for (int i = 0; i < rows; i++)
-      for (int j = 0; j < cols; j++)
-        for (int k = 0; k < n_dirs; k++)
-          visited[i][j][k] = false;
+
+    // for (int i = 0; i < rows; i++)
+    //   for (int j = 0; j < cols; j++)
+    //     for (int k = 0; k < n_dirs; k++)
+    //       visited[i][j][k] = false;
+    std::memset(visited, 0, sizeof(visited));  // set all bytes to 0
 
     int i = 0;
     while (i < rows*cols - 1) {
@@ -58,86 +62,71 @@ int main() {
       int col = i - row*cols;
       std::cin >> config_str;
       // std::cout << "Line " << i << ": " << config_str << std::endl;
-      std::vector<int> config_arr = get_config_arr(config_str);
-      maze[row][col] = config_arr;
+      maze[row][col] = get_config_arr(config_str); 
       i++;
     }
-    // for (int i = 0; i < rows; i++) {
-    //   for (int j = 0; j < cols; j++) {
-    //     if (i*j == (rows-1)*(cols-1))
-    //       break;
-    //     std::vector<int> config_arr = maze[i][j];
-    //   }
-    // }
-    // std::cout << std::endl;
 
     bool goal_found = false;
-    int path_cost = 0;
-    int rotation = 0;
+    int rot = 0;
 
-    std::vector<std::vector<int>> frontier;
-    std::vector<int> start = {0, 0};
-    std::vector<int> pos;
-    frontier.push_back(start);
 
-    while (!frontier.empty() and !goal_found) {
-      std::vector<std::vector<int>> new_frontier;
-      while (!frontier.empty()) {
-        pos = frontier.back();
-        visited[pos[0]][pos[1]][rotation] = true;
-        // std::cout << "[" << pos[0] << ", " << pos[1] << "]" << std::endl; 
-        frontier.pop_back();
+    min_prior_q q;
+    int path_len = 0;
+    t3int start = {path_len, 0, 0};
+    int pos_val, pos_x, pos_y;
+    q.push(start);
 
-        // go through all possible directions
-        std::vector<int> config_arr = maze[pos[0]][pos[1]];
-        for (int i = 0; i < n_dirs; i++) {
-          int idx = (i - rotation + n_dirs) % n_dirs;
-          // std::cout << idx << " = (" << i << " - " << rotation << ") % " << n_dirs << " ---> " << config_arr[idx] << std::endl;
-          if (config_arr[idx] == 1) {
-            std::vector<int> new_pos(2, 0);
-            if ((i == 0) and (pos[0] - 1 >= 0)) {
-              // std::cout << "going north" << std::endl;
-              new_pos = {pos[0] - 1, pos[1]};
-            }
-            else if ((i == 1) and (pos[1] + 1 < cols)) {
-              // std::cout << "going east" << std::endl;
-              new_pos = {pos[0], pos[1] + 1};
-            }
-            else if ((i == 2) and (pos[0] + 1 < rows)) {
-              // std::cout << "going south" << std::endl;
-              new_pos = {pos[0] + 1, pos[1]};
-            }
-            else if ((i == 3) and (pos[1] - 1 >= 0)) {
-              // std::cout << "going west" << std::endl;
-              new_pos = {pos[0], pos[1] - 1};
-            }
-            else {
-              // std::cout << "no way" << std::endl;
-              continue;
-            }
+    while (!q.empty() and !goal_found) {
+      std::tie(pos_val, pos_x, pos_y) = q.top();
+      rot = pos_val % n_dirs;
+      q.pop();
 
-            if (new_pos[0] == cols-1 and new_pos[1] == rows-1) 
-              goal_found = true;
-            else if (!visited[new_pos[0]]
-                             [new_pos[1]]
-                             [(rotation+1)%n_dirs]) {
-              new_frontier.push_back(new_pos);
-            }
+      // go through all possible directions
+      std::vector<int> config_arr = maze[pos_y][pos_x];
+      for (int i = 0; i < n_dirs; i++) {
+        int idx = (n_dirs - rot + i) % n_dirs;
+        if (config_arr[idx] == 1) {
+          int new_pos_x = 0, new_pos_y = 0;
+          // going north
+          if ((i == 0) and (pos_y - 1 >= 0)) {
+            new_pos_x = pos_x;
+            new_pos_y = pos_y - 1;
+          }
+          // going east
+          else if ((i == 1) and (pos_x + 1 < cols)) {
+            new_pos_x = pos_x + 1;
+            new_pos_y = pos_y;
+          }
+          // going south
+          else if ((i == 2) and (pos_y + 1 < rows)) {
+            new_pos_x = pos_x;
+            new_pos_y = pos_y + 1;
+          }
+          // going west
+          else if ((i == 3) and (pos_x - 1 >= 0)) {
+            new_pos_x = pos_x - 1;
+            new_pos_y = pos_y;
+          }
+          // undefined
+          else {
+            continue;
+          }
+
+          if (new_pos_y == rows-1 and new_pos_x == cols-1) 
+            goal_found = true;
+          else if (!visited[new_pos_y][new_pos_x][(rot+1)%n_dirs]) {
+            visited[new_pos_y][new_pos_x][(rot+1)%n_dirs] = true;
+
+            t3int new_pos = {pos_val+1, new_pos_x, new_pos_y};
+            q.push(new_pos);
           }
         }
       }
-      path_cost += 1;
-      rotation = (rotation + 1) % n_dirs;
-      frontier = new_frontier;
-      // std::cout << "rotated" << std::endl;
     }
-
-    if (goal_found) {
-      std::cout << path_cost << std::endl;
-    }
-    else {
+    if (goal_found)
+      std::cout << pos_val+1 << std::endl;
+    else 
       std::cout << "no path to exit" << std::endl;
-    }
   }
   return 0;
 }
