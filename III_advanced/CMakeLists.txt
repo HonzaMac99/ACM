@@ -24,6 +24,8 @@ add_executable(route 5_3_RouteChange.cpp)
 add_executable(cars 5_4_FunnyCarRacing.cpp)
 
 # minisoutez IV
+add_executable(fact 7_2_FactorialFactors.cpp)
+add_executable(sum 7_9_Summation.cpp)
 
 
 
