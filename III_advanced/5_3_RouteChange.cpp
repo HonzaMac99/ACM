@@ -65,40 +65,37 @@ int main() {
 
 
     int city_cost, city_id;
-    bool visited[n_cities];
-    std::memset(visited, 0, sizeof(visited));  // set all bytes to 0
+    int c_vals[n_cities];
+    std::memset(c_vals, -1, sizeof(c_vals));  // set all bytes to -1 
 
     
     t2int start = {0, city_k};
     min_prior_q q;
-    visited[city_k] = true;
-    // std::cout << "Start: " << city_k << " " << 0 << std::endl; 
+    c_vals[city_k] = 0;
     q.push(start);
 
     int min_path_cost = n_roads*250;
     while(!q.empty()) {
       std::tie(city_cost, city_id) = q.top();
       q.pop();
-      visited[city_id] = true;
 
+      // go through all possible routes from current city
       for (int i = 0; i < n_cities; i++) {
         int e_cost = adj_mat[city_id][i];
         if (e_cost == -1) 
           continue;
 
+        int next_city_cost = city_cost + e_cost;
+
         if (i < c_len) {
           int path_cost = city_cost + e_cost + c_cities_cost[i];
           if (path_cost < min_path_cost) {
             min_path_cost = path_cost;
-            // std::cout << "Best path: " << min_path_cost << std::endl; 
           }
         }
-        // std::cout << visited[i]  << " " << e_cost << std::endl;
-        else if (not visited[i]) {
-          // visited[i] = true;
-          int next_city_cost = e_cost + city_cost;
+        else if ((c_vals[i] == -1) or (next_city_cost < c_vals[i])) {
+          c_vals[i] = next_city_cost; 
           t2int next_city = {next_city_cost, i};
-          // std::cout << "Pushing: " << next_city_cost << " " << i << std::endl; 
           q.push(next_city);
         }
       }
