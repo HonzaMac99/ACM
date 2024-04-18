@@ -27,13 +27,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # add_executable(fact 7_2_FactorialFactors.cpp)
 # add_executable(sum 7_9_Summation.cpp)
 
-# seminar 5
-add_executable(vg 8_0_prep.cpp)
-add_executable(circle 8_1_circle.cpp)
+# # seminar 5
+# add_executable(vg 8_0_prep.cpp)
+# add_executable(circle 8_1_circle.cpp)
 
 
 # minisoutez V
-
+add_executable(himals 9_1_himalayas.cpp)
+add_executable(sym 9_3_symmetry.cpp)
 
 
 # enable_testing()
