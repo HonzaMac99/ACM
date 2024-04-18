@@ -18,16 +18,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # minisoutez II
 
-# minisoutez III
-add_executable(maze 5_1_RRmaze.cpp)
-add_executable(route 5_3_RouteChange.cpp)
-add_executable(cars 5_4_FunnyCarRacing.cpp)
+# # minisoutez III
+# add_executable(maze 5_1_RRmaze.cpp)
+# add_executable(route 5_3_RouteChange.cpp)
+# add_executable(cars 5_4_FunnyCarRacing.cpp)
 
-# minisoutez IV
-add_executable(fact 7_2_FactorialFactors.cpp)
-add_executable(sum 7_9_Summation.cpp)
+# # minisoutez IV
+# add_executable(fact 7_2_FactorialFactors.cpp)
+# add_executable(sum 7_9_Summation.cpp)
+
+# seminar 5
+add_executable(vg 8_0_prep.cpp)
+add_executable(circle 8_1_circle.cpp)
 
 
+# minisoutez V
 
 
 
