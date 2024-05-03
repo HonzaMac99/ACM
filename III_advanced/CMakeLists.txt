@@ -40,11 +40,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # add_executable(vg 8_0_prep.cpp)
 # add_executable(circle 8_1_circle.cpp)
 
-# minisoutez V
-add_executable(himals 9_1_himalayas.cpp)        #+3p
-add_executable(sym 9_3_symmetry.cpp)            #+1p
+# # minisoutez V
+# add_executable(himals 9_1_himalayas.cpp)        #+3p
+# add_executable(sym 9_3_symmetry.cpp)            #+1p
 
 # minisoutez VI
+add_executable(chess 11_1_chess.cpp)              #+3p
+add_executable(got 11_8_GoT.cpp)
+
 # minisoutez VII
 
 
