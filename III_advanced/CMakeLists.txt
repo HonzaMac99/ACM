@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #############################
-#     total score: 15p      #
+#     total score: 22p      #
 #############################
 
 ##########
@@ -48,6 +48,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(chess 11_1_chess.cpp)              #+3p
 add_executable(got 11_8_GoT.cpp)
 
-# minisoutez VII
+# # minisoutez VII
+# # (python) 12_1_Coke.py                         #+3p
+# # (python) 12_8_Foodie.py                       #+3p
+# # (python) 12_9_PrimePath.py                    #+1p
+
+# minisoutez VIII
 
 
