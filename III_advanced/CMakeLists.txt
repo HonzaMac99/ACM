@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #############################
-#     total score: 22p      #
+#     total score: 32p      #
 #############################
 
 ##########
@@ -44,9 +44,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # add_executable(himals 9_1_himalayas.cpp)        #+3p
 # add_executable(sym 9_3_symmetry.cpp)            #+1p
 
-# minisoutez VI
-add_executable(chess 11_1_chess.cpp)              #+3p
-add_executable(got 11_8_GoT.cpp)
+# # minisoutez VI
+# add_executable(chess 11_1_chess.cpp)            #+3p
+# add_executable(got 11_8_GoT.cpp)
 
 # # minisoutez VII
 # # (python) 12_1_Coke.py                         #+3p
@@ -54,6 +54,9 @@ add_executable(got 11_8_GoT.cpp)
 # # (python) 12_9_PrimePath.py                    #+1p
 
 # minisoutez VIII
-add_executable(abc 13_9_Abc_path.cpp)
+# add_executable(trigraph 13_10_Trigraph.cpp)     #+3p
+# add_executable(abc 13_9_Abc_path.cpp)           #+3p
+add_executable(filch 13_11_Filch.cpp)             #+0p!!
+add_executable(lochness 13_8_Lochness.cpp)        #+1p
 
 

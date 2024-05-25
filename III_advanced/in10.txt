@@ -1,6 +1,0 @@
-4 3
-ABE
-CFG
-BDH
-ABC
-0 0
