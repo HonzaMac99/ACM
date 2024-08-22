@@ -21,7 +21,6 @@ int main() {
   }
 
   ull* combs = new ull[max_element+1];
-  ull* supp = new ull[max_element+1];
   ull* uniq = new ull[max_element+1];
 
   std::memset(combs, 0, max_element+1);
@@ -32,7 +31,7 @@ int main() {
     uniq[i] = (i < 3) ? 1 : 2; 
 
     for(int j = 0; j < i; j++) {
-      combs[i] += combs[j]*uniq[i-j];
+      combs[i] = (combs[i] + combs[j]*uniq[i-j]) % 10000;
     }
   }
   

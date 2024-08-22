@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #############################
-#     total score: 32p      #
+#     total score: 37p      #
 #############################
 
 ##########
@@ -23,7 +23,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # # minisoutez I
 # add_executable(odd_sum 1_4_odd_sum.cpp)         #(+3p)
-# add_executable(aggrcow 1_6_aggrcow.cpp)         #+0p
+# add_executable(aggrcow 1_6_aggrcow.cpp)         #+1p!
+# add_executable(empty 1_7_empty.cpp)             #+0p??
+# add_executable(facefrnd 1_8_facefrnd.cpp)       #+1p!
+# add_executable(hangover 1_9_hangover.cpp)       #+1p
+# add_executable(rrsched 1_10_rrsched.cpp)        #+1p!
 
 # minisoutez II
 
@@ -56,7 +60,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # minisoutez VIII
 # add_executable(trigraph 13_10_Trigraph.cpp)     #+3p
 # add_executable(abc 13_9_Abc_path.cpp)           #+3p
-add_executable(filch 13_11_Filch.cpp)             #+0p!!
-add_executable(lochness 13_8_Lochness.cpp)        #+1p
+# add_executable(filch 13_11_Filch.cpp)           #+1p
+# add_executable(lochness 13_8_Lochness.cpp)      #+1p
 
 
