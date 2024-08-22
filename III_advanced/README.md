@@ -16,3 +16,4 @@ Here are some usefull tips how to use cmake:
 ## VsCode
 
 Another option is Visual Studio Code IDE, which is good unles it disrupts all your package updating system after installation of this package.
+
